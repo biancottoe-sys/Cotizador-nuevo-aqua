@@ -46,7 +46,7 @@
       "detailDescription", "specList", "quantity", "addBtn", "budgetItems",
       "itemCount", "clientName", "projectName", "contactName", "email",
       "validity", "discount", "applyVat", "observations", "subtotal",
-      "discountAmount", "vatAmount", "total", "printBtnSide", "exportBtn",
+      "discountAmount", "vatAmount", "total", "printBtnSide",
       "clearBtn", "printDocument", "cartBtn", "cartBadge", "catalogView",
       "cartView", "continueShoppingBtn", "detailSection", "cartToast",
       "variantField", "variantSelect", "variantHelp", "techSheetBtn"
@@ -75,7 +75,6 @@
       persist();
     });
     els.printBtnSide.addEventListener("click", printBudget);
-    els.exportBtn.addEventListener("click", exportJson);
     els.clearBtn.addEventListener("click", clearBudget);
     els.cartBtn.addEventListener("click", function () {
       showCartView();
@@ -668,19 +667,6 @@
       return "";
     }
     return '<br><em class="print-note">Requerimientos: ' + escapeHtml(note) + '</em>';
-  }
-
-  function exportJson() {
-    readProjectForm();
-    var payload = {
-      quoteNumber: state.quoteNumber,
-      currency: "USD",
-      date: new Date().toISOString(),
-      project: state.project,
-      items: state.items,
-      totals: calculateTotals()
-    };
-    downloadFile("presupuesto-aquaglass-" + state.quoteNumber + ".json", "application/json;charset=utf-8", JSON.stringify(payload, null, 2));
   }
 
   function clearBudget() {
