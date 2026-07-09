@@ -327,22 +327,28 @@
     var measure = variant ? variant.measure : displayMeasureForProduct(product);
     var price = variant ? variant.price : displayPriceForProduct(product);
     var date = new Date().toLocaleDateString("es-AR");
+    var dimensions = technicalDimensions(product, measure);
     return '<!doctype html><html lang="es"><head><meta charset="utf-8">' +
       '<meta name="viewport" content="width=device-width, initial-scale=1">' +
       '<title>Ficha técnica - ' + escapeHtml(product.name) + '</title>' +
       '<style>' +
       'body{margin:0;background:#f2f3f3;color:#111;font-family:Segoe UI,Arial,sans-serif;}' +
-      '.sheet{max-width:900px;margin:28px auto;padding:34px;background:#fff;border:1px solid #ddd;}' +
+      '.sheet{max-width:960px;margin:28px auto;padding:34px;background:#fff;border:1px solid #ddd;}' +
       'header{display:flex;justify-content:space-between;gap:20px;border-bottom:2px solid #111;padding-bottom:18px;margin-bottom:24px;}' +
       'h1{margin:0;font-size:30px;} h2{font-size:18px;margin:26px 0 10px;} p{line-height:1.5;color:#555;}' +
       '.code{font-weight:800;border:1px solid #ccc;border-radius:999px;padding:7px 12px;height:max-content;}' +
       '.hero{display:grid;grid-template-columns:260px 1fr;gap:22px;align-items:start;}' +
       '.hero img{width:100%;height:210px;object-fit:cover;border:1px solid #ddd;border-radius:8px;}' +
+      '.diagram-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px;}' +
+      '.diagram-card{padding:14px;border:1px solid #ddd;border-radius:8px;background:#fbfbfa;}' +
+      '.diagram-card h3{margin:0 0 10px;font-size:15px;}' +
+      '.diagram-card svg{width:100%;height:auto;display:block;background:#fff;border:1px solid #ddd;border-radius:6px;}' +
+      '.diagram-note{margin:8px 0 0;font-size:12px;color:#666;}' +
       'table{width:100%;border-collapse:collapse;margin-top:8px;} td,th{padding:11px;border:1px solid #ddd;text-align:left;}' +
       'th{background:#f6f6f5;} .note{margin-top:24px;padding:14px;background:#f8f8f7;border:1px solid #ddd;border-radius:8px;}' +
       '.actions{margin-top:22px;} button{min-height:42px;padding:0 16px;border-radius:8px;border:1px solid #111;background:#111;color:#fff;font-weight:800;cursor:pointer;}' +
       '@media print{body{background:#fff}.sheet{margin:0;border:0}.actions{display:none}}' +
-      '@media(max-width:760px){.sheet{margin:0;padding:20px}.hero{grid-template-columns:1fr}header{display:block}.code{display:inline-block;margin-top:12px}}' +
+      '@media(max-width:760px){.sheet{margin:0;padding:20px}.hero,.diagram-grid{grid-template-columns:1fr}header{display:block}.code{display:inline-block;margin-top:12px}}' +
       '</style></head><body><main class="sheet">' +
       '<header><div><p style="margin:0 0 6px;color:#666;font-weight:800;text-transform:uppercase;letter-spacing:.08em;">Aquaglass</p>' +
       '<h1>' + escapeHtml(product.name) + '</h1><p>Ficha técnica provisoria</p></div><div class="code">' + escapeHtml(product.code) + '</div></header>' +
@@ -355,9 +361,20 @@
       techRow("Precio ficticio", money(price)) +
       techRow("Fecha", date) +
       '</tbody></table></div></section>' +
+      '<section><h2>Dibujo técnico referencial</h2><div class="diagram-grid">' +
+      '<div class="diagram-card"><h3>Vista superior / cotas generales</h3>' + technicalDrawingSvg(product, dimensions) +
+      '<p class="diagram-note">Cotas expresadas en centímetros. Dibujo no apto para obra final.</p></div>' +
+      '<div class="diagram-card"><h3>Esquema de instalación</h3>' + installationSvg(product, dimensions) +
+      '<p class="diagram-note">Esquema orientativo para prever apoyos, muros, nivelación y desagote.</p></div>' +
+      '</div></section>' +
       '<h2>Especificaciones de referencia</h2><table><tbody>' +
       techRow("Uso sugerido", "Residencial / obra") +
       techRow("Color base", "Blanco brillante") +
+      techRow("Largo nominal", dimensions.length + " cm") +
+      techRow("Ancho nominal", dimensions.width + " cm") +
+      techRow("Altura nominal", dimensions.height + " cm") +
+      techRow("Profundidad útil", dimensions.depth + " cm") +
+      techRow("Desagote sugerido", dimensions.drain) +
       techRow("Instalación", "A confirmar según proyecto") +
       techRow("Garantía", "Referencia comercial a definir") +
       techRow("Observaciones", "Ficha ficticia para armado de estructura interna") +
@@ -369,6 +386,65 @@
 
   function techRow(label, value) {
     return '<tr><th>' + escapeHtml(label) + '</th><td>' + escapeHtml(value || "-") + '</td></tr>';
+  }
+
+  function technicalDimensions(product, measure) {
+    var numbers = String(measure || "").match(/\d+/g) || [];
+    var category = normalize(product.category);
+    var length = Number(numbers[0] || 170);
+    var width = Number(numbers[1] || (category.indexOf("espejo") !== -1 ? 80 : 70));
+    var isBath = category.indexOf("banera") !== -1;
+    var isShower = category.indexOf("ducha") !== -1 || category.indexOf("receptaculo") !== -1;
+    return {
+      length: length,
+      width: width,
+      height: isBath ? 58 : (isShower ? 8 : 45),
+      depth: isBath ? 42 : (isShower ? 3 : 12),
+      drain: isBath || isShower ? "Salida 40/50 mm a confirmar en obra" : "No aplica / según modelo",
+      isBath: isBath,
+      isShower: isShower
+    };
+  }
+
+  function technicalDrawingSvg(product, dimensions) {
+    var label = escapeHtml(product.name);
+    return '<svg viewBox="0 0 520 310" role="img" aria-label="Dibujo técnico referencial de ' + escapeAttribute(product.name) + '">' +
+      '<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#111"/></marker></defs>' +
+      '<rect x="0" y="0" width="520" height="310" fill="#fff"/>' +
+      '<rect x="86" y="70" width="350" height="150" rx="16" fill="#f4f4f3" stroke="#111" stroke-width="3"/>' +
+      '<rect x="118" y="98" width="286" height="94" rx="12" fill="#fff" stroke="#777" stroke-width="2"/>' +
+      '<circle cx="365" cy="145" r="12" fill="#fff" stroke="#111" stroke-width="2"/>' +
+      '<circle cx="365" cy="145" r="4" fill="#111"/>' +
+      '<line x1="86" y1="250" x2="436" y2="250" stroke="#111" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>' +
+      '<line x1="66" y1="70" x2="66" y2="220" stroke="#111" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>' +
+      '<line x1="86" y1="232" x2="86" y2="266" stroke="#999"/><line x1="436" y1="232" x2="436" y2="266" stroke="#999"/>' +
+      '<line x1="50" y1="70" x2="82" y2="70" stroke="#999"/><line x1="50" y1="220" x2="82" y2="220" stroke="#999"/>' +
+      '<text x="261" y="278" text-anchor="middle" font-size="18" font-weight="700">' + dimensions.length + ' cm</text>' +
+      '<text x="36" y="150" text-anchor="middle" font-size="18" font-weight="700" transform="rotate(-90 36 150)">' + dimensions.width + ' cm</text>' +
+      '<text x="260" y="38" text-anchor="middle" font-size="15" fill="#555">' + label + '</text>' +
+      '<text x="365" y="124" text-anchor="middle" font-size="12" fill="#555">Desagote</text>' +
+      '</svg>';
+  }
+
+  function installationSvg(product, dimensions) {
+    var wallLabel = dimensions.isBath ? "Muro / soporte perimetral" : "Plano de apoyo";
+    return '<svg viewBox="0 0 520 310" role="img" aria-label="Esquema de instalación de ' + escapeAttribute(product.name) + '">' +
+      '<rect x="0" y="0" width="520" height="310" fill="#fff"/>' +
+      '<rect x="60" y="42" width="400" height="38" fill="#e9e9e7" stroke="#999"/>' +
+      '<rect x="98" y="112" width="324" height="74" rx="8" fill="#f7f7f6" stroke="#111" stroke-width="3"/>' +
+      '<rect x="112" y="126" width="296" height="44" rx="6" fill="#fff" stroke="#777"/>' +
+      '<line x1="106" y1="204" x2="416" y2="204" stroke="#111" stroke-width="6"/>' +
+      '<line x1="166" y1="204" x2="166" y2="252" stroke="#777" stroke-width="5"/>' +
+      '<line x1="354" y1="204" x2="354" y2="252" stroke="#777" stroke-width="5"/>' +
+      '<circle cx="365" cy="148" r="10" fill="#fff" stroke="#111" stroke-width="2"/>' +
+      '<path d="M365 158 C365 190, 310 190, 310 232 L310 258" fill="none" stroke="#111" stroke-width="4"/>' +
+      '<path d="M300 258 H380" stroke="#111" stroke-width="4"/>' +
+      '<line x1="98" y1="96" x2="422" y2="96" stroke="#bbb" stroke-dasharray="6 6"/>' +
+      '<text x="260" y="67" text-anchor="middle" font-size="15" font-weight="700">' + escapeHtml(wallLabel) + '</text>' +
+      '<text x="260" y="226" text-anchor="middle" font-size="13" fill="#555">Base nivelada / apoyos continuos</text>' +
+      '<text x="404" y="152" font-size="13" fill="#555">Salida sanitaria</text>' +
+      '<text x="260" y="286" text-anchor="middle" font-size="13" fill="#555">Altura nominal aprox.: ' + dimensions.height + ' cm</text>' +
+      '</svg>';
   }
 
   function renderVariantSelector(product) {
