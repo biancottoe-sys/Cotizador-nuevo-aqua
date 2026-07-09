@@ -1,8 +1,8 @@
 ﻿window.AQUAGLASS_PRICES = {
   "version": "1.0.0",
-  "currency": "ARS",
+  "currency": "USD",
   "vatRate": 0.21,
-  "defaultConditions": "Precios expresados en pesos argentinos. Valores ficticios de referencia sujetos a revisi?n comercial.\nLa cotizaci?n no incluye instalaci?n, flete ni trabajos de obra civil salvo indicaci?n expresa.\nPlazo de entrega estimado a confirmar seg?n disponibilidad y aprobaci?n final del pedido.\nForma de pago y se?as a convenir con el ?rea comercial de Aquaglass.",
+  "defaultConditions": "Precios expresados en d?lares americanos (USD). Valores ficticios de referencia sujetos a revisi?n comercial.\nLa cotizaci?n no incluye instalaci?n, flete ni trabajos de obra civil salvo indicaci?n expresa.\nPlazo de entrega estimado a confirmar seg?n disponibilidad y aprobaci?n final del pedido.\nForma de pago y se?as a convenir con el ?rea comercial de Aquaglass.",
   "categories": {
     "baneras": {
       "base": 540000,

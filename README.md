@@ -21,4 +21,4 @@ Opción con servidor local:
 - Fotos reales copiadas: `assets/catalogo-real/`.
 - Logo y recursos base: `assets/`.
 
-Los precios son ficticios, en pesos argentinos, dentro de un rango de referencia de $1 a $1.000.
+Los precios son ficticios, en dólares americanos, dentro de un rango de referencia de $1 a $1.000.

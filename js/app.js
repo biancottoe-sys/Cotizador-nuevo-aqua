@@ -594,7 +594,25 @@
       return;
     }
     els.printDocument.innerHTML = buildPrintHtml();
+    setPrintDocumentTitle();
     window.print();
+  }
+
+  function setPrintDocumentTitle() {
+    var originalTitle = document.title;
+    document.title = buildPdfFilename();
+    window.addEventListener("afterprint", function restoreTitle() {
+      document.title = originalTitle;
+      window.removeEventListener("afterprint", restoreTitle);
+    });
+  }
+
+  function buildPdfFilename() {
+    return [
+      "AquaGlass",
+      filenamePart(state.project.clientName || "Cliente"),
+      filenamePart(state.project.projectName || "Obra")
+    ].join("_");
   }
 
   function buildPrintHtml() {
@@ -630,14 +648,14 @@
       '</tr></thead><tbody>' + rows + '</tbody></table></section>' +
       '<section class="print-section print-bottom"><div>' +
       '<h2>Observaciones</h2><p class="print-text">' + escapeHtml(state.project.observations || "Sin observaciones.") + '</p>' +
-      '<h2>Condiciones comerciales</h2><p class="print-text">Precios ficticios de referencia expresados en pesos argentinos. No incluyen instalación, flete ni trabajos de obra civil salvo indicación expresa. Presupuesto sujeto a revisión comercial final.</p>' +
+      '<h2>Condiciones comerciales</h2><p class="print-text">Precios ficticios de referencia expresados en dólares americanos (USD). No incluyen instalación, flete ni trabajos de obra civil salvo indicación expresa. Presupuesto sujeto a revisión comercial final.</p>' +
       '</div><div class="print-totals">' +
       '<div><span>Subtotal</span><strong>' + money(totals.subtotal) + '</strong></div>' +
       '<div><span>Descuento</span><strong>- ' + money(totals.discount) + '</strong></div>' +
       '<div><span>IVA</span><strong>' + money(totals.vat) + '</strong></div>' +
       '<div class="final"><span>Total</span><strong>' + money(totals.total) + '</strong></div>' +
       '</div></section>' +
-      '<footer class="print-footer">Aquaglass · Catálogo comercial con imágenes reales · ' + escapeHtml(state.quoteNumber) + '</footer>' +
+      '<footer class="print-footer">Aquaglass · Catálogo comercial con imágenes reales · Valores expresados en dólares americanos (USD) · ' + escapeHtml(state.quoteNumber) + '</footer>' +
       '</div>';
   }
 
@@ -656,7 +674,7 @@
     readProjectForm();
     var payload = {
       quoteNumber: state.quoteNumber,
-      currency: "ARS",
+      currency: "USD",
       date: new Date().toISOString(),
       project: state.project,
       items: state.items,
@@ -798,9 +816,7 @@
   }
 
   function money(value) {
-    return Number(value || 0).toLocaleString("es-AR", {
-      style: "currency",
-      currency: "ARS",
+    return "$ " + Number(value || 0).toLocaleString("es-AR", {
       maximumFractionDigits: 0
     });
   }
@@ -827,6 +843,16 @@
 
   function slugify(value) {
     return normalize(value).replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "producto";
+  }
+
+  function filenamePart(value) {
+    return String(value || "")
+      .trim()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[\\/:*?"<>|]+/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/_+/g, "-") || "Sin-dato";
   }
 
   function cssEscape(value) {

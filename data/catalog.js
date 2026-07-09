@@ -1,6 +1,6 @@
 window.AQUAGLASS_CATALOG = {
     "version":  "2.0.0",
-    "currency":  "ARS",
+    "currency":  "USD",
     "heroImages":  [
                        "assets/catalogo-real/hero-hf-20260622-212138-1c2bdf04-a717-4004-aa3a-ee2532eaf5b0-1.jpg",
                        "assets/catalogo-real/hero-hf-20260622-220252-25900b36-5c4b-43dc-95a1-44c4d3db3af4.jpg",
