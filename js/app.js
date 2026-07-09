@@ -49,7 +49,7 @@
       "discountAmount", "vatAmount", "total", "printBtnSide", "exportBtn",
       "clearBtn", "printDocument", "cartBtn", "cartBadge", "catalogView",
       "cartView", "continueShoppingBtn", "detailSection", "cartToast",
-      "variantField", "variantSelect", "variantHelp"
+      "variantField", "variantSelect", "variantHelp", "techSheetBtn"
     ].forEach(function (id) {
       els[id] = document.getElementById(id);
     });
@@ -63,6 +63,7 @@
     });
 
     els.addBtn.addEventListener("click", addSelectedProduct);
+    els.techSheetBtn.addEventListener("click", openTechnicalSheet);
     els.variantSelect.addEventListener("change", function () {
       var product = selectedProduct();
       if (!product) {
@@ -268,6 +269,7 @@
     els.variantField.hidden = true;
     els.variantSelect.innerHTML = "";
     els.addBtn.disabled = true;
+    els.techSheetBtn.disabled = true;
     return;
     els.detailImage.src = "assets/placeholder-product.jpg";
     els.detailImage.alt = "Producto sin seleccionar";
@@ -302,6 +304,72 @@
       return "<div><dt>" + escapeHtml(spec[0]) + "</dt><dd>" + escapeHtml(spec[1]) + "</dd></div>";
     }).join("");
     els.addBtn.disabled = hasVariants(product) && !variant;
+    els.techSheetBtn.disabled = false;
+  }
+
+  function openTechnicalSheet() {
+    var product = selectedProduct();
+    if (!product) {
+      return;
+    }
+    var html = buildTechnicalSheetHtml(product);
+    var sheetWindow = window.open("", "_blank");
+    if (sheetWindow) {
+      sheetWindow.document.open();
+      sheetWindow.document.write(html);
+      sheetWindow.document.close();
+      return;
+    }
+    downloadFile("ficha-tecnica-" + slugify(product.name) + ".html", "text/html;charset=utf-8", html);
+  }
+
+  function buildTechnicalSheetHtml(product) {
+    var variant = selectedVariant(product);
+    var measure = variant ? variant.measure : displayMeasureForProduct(product);
+    var price = variant ? variant.price : displayPriceForProduct(product);
+    var date = new Date().toLocaleDateString("es-AR");
+    return '<!doctype html><html lang="es"><head><meta charset="utf-8">' +
+      '<meta name="viewport" content="width=device-width, initial-scale=1">' +
+      '<title>Ficha técnica - ' + escapeHtml(product.name) + '</title>' +
+      '<style>' +
+      'body{margin:0;background:#f2f3f3;color:#111;font-family:Segoe UI,Arial,sans-serif;}' +
+      '.sheet{max-width:900px;margin:28px auto;padding:34px;background:#fff;border:1px solid #ddd;}' +
+      'header{display:flex;justify-content:space-between;gap:20px;border-bottom:2px solid #111;padding-bottom:18px;margin-bottom:24px;}' +
+      'h1{margin:0;font-size:30px;} h2{font-size:18px;margin:26px 0 10px;} p{line-height:1.5;color:#555;}' +
+      '.code{font-weight:800;border:1px solid #ccc;border-radius:999px;padding:7px 12px;height:max-content;}' +
+      '.hero{display:grid;grid-template-columns:260px 1fr;gap:22px;align-items:start;}' +
+      '.hero img{width:100%;height:210px;object-fit:cover;border:1px solid #ddd;border-radius:8px;}' +
+      'table{width:100%;border-collapse:collapse;margin-top:8px;} td,th{padding:11px;border:1px solid #ddd;text-align:left;}' +
+      'th{background:#f6f6f5;} .note{margin-top:24px;padding:14px;background:#f8f8f7;border:1px solid #ddd;border-radius:8px;}' +
+      '.actions{margin-top:22px;} button{min-height:42px;padding:0 16px;border-radius:8px;border:1px solid #111;background:#111;color:#fff;font-weight:800;cursor:pointer;}' +
+      '@media print{body{background:#fff}.sheet{margin:0;border:0}.actions{display:none}}' +
+      '@media(max-width:760px){.sheet{margin:0;padding:20px}.hero{grid-template-columns:1fr}header{display:block}.code{display:inline-block;margin-top:12px}}' +
+      '</style></head><body><main class="sheet">' +
+      '<header><div><p style="margin:0 0 6px;color:#666;font-weight:800;text-transform:uppercase;letter-spacing:.08em;">Aquaglass</p>' +
+      '<h1>' + escapeHtml(product.name) + '</h1><p>Ficha técnica provisoria</p></div><div class="code">' + escapeHtml(product.code) + '</div></header>' +
+      '<section class="hero"><img src="' + escapeAttribute(product.images[0]) + '" alt="' + escapeAttribute(product.name) + '">' +
+      '<div><h2>Datos generales</h2><table><tbody>' +
+      techRow("Línea", product.category) +
+      techRow("Medida", measure) +
+      techRow("Material", product.material) +
+      techRow("Terminación", product.finish) +
+      techRow("Precio ficticio", money(price)) +
+      techRow("Fecha", date) +
+      '</tbody></table></div></section>' +
+      '<h2>Especificaciones de referencia</h2><table><tbody>' +
+      techRow("Uso sugerido", "Residencial / obra") +
+      techRow("Color base", "Blanco brillante") +
+      techRow("Instalación", "A confirmar según proyecto") +
+      techRow("Garantía", "Referencia comercial a definir") +
+      techRow("Observaciones", "Ficha ficticia para armado de estructura interna") +
+      '</tbody></table>' +
+      '<p class="note">Documento de referencia. Las medidas, precios y condiciones técnicas finales deben confirmarse con el equipo comercial de Aquaglass.</p>' +
+      '<div class="actions"><button type="button" onclick="window.print()">Imprimir / guardar PDF</button></div>' +
+      '</main></body></html>';
+  }
+
+  function techRow(label, value) {
+    return '<tr><th>' + escapeHtml(label) + '</th><td>' + escapeHtml(value || "-") + '</td></tr>';
   }
 
   function renderVariantSelector(product) {
@@ -755,6 +823,10 @@
 
   function normalize(value) {
     return String(value || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  }
+
+  function slugify(value) {
+    return normalize(value).replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "producto";
   }
 
   function cssEscape(value) {
