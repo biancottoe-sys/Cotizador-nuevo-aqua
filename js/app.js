@@ -486,9 +486,10 @@
           '<div class="budget-item-body">' +
           '<header><div><h3>' + escapeHtml(item.name) + '</h3><small>' + escapeHtml(item.code) + '</small></div>' +
           '<button type="button" class="trash-button" data-action="remove" data-id="' + escapeAttribute(item.id) + '" aria-label="Borrar producto">' + trashIcon() + '</button></header>' +
-          '<p>' + escapeHtml(item.category + " - " + item.measure + " - " + money(item.unitPrice) + " c/u") + '</p>' +
+          '<p>' + escapeHtml(item.category + " - " + item.measure) + '</p>' +
           '<div class="item-fields">' +
           '<label>Cantidad<input class="item-quantity" type="number" min="1" step="1" value="' + escapeAttribute(item.quantity) + '" data-action="quantity" data-id="' + escapeAttribute(item.id) + '"></label>' +
+          '<label>Precio unitario<input class="item-price" type="number" min="0" step="1" value="' + escapeAttribute(item.unitPrice) + '" data-action="unit-price" data-id="' + escapeAttribute(item.id) + '"></label>' +
           '<strong data-line-total="' + escapeAttribute(item.id) + '">' + money(item.subtotal) + '</strong>' +
           '</div>' +
           '<label class="item-note">Requerimientos especiales<textarea rows="2" data-action="note" data-id="' + escapeAttribute(item.id) + '" placeholder="Ej: terminacion, medida especial, detalle de obra...">' + escapeHtml(item.note) + '</textarea></label>' +
@@ -508,6 +509,14 @@
       });
       input.addEventListener("change", function () {
         updateItem(input.dataset.id, "quantity", input.value);
+      });
+    });
+    Array.prototype.forEach.call(els.budgetItems.querySelectorAll("input[data-action='unit-price']"), function (input) {
+      input.addEventListener("input", function () {
+        updateItem(input.dataset.id, "unit-price", input.value);
+      });
+      input.addEventListener("change", function () {
+        updateItem(input.dataset.id, "unit-price", input.value);
       });
     });
     Array.prototype.forEach.call(els.budgetItems.querySelectorAll("textarea[data-action='note']"), function (textarea) {
@@ -535,6 +544,12 @@
       updateLineSubtotal(item);
       updateTotalsDisplay();
       updateCartBadge();
+    }
+    if (action === "unit-price") {
+      item.unitPrice = Math.max(0, Math.round(Number(value) || 0));
+      item.subtotal = item.quantity * item.unitPrice;
+      updateLineSubtotal(item);
+      updateTotalsDisplay();
     }
     if (action === "note") {
       item.note = value || "";
@@ -754,6 +769,7 @@
       item.image = item.image || productImageById(item.productId);
       item.note = item.note || "";
       item.variantCode = item.variantCode || "";
+      item.unitPrice = Math.max(0, Math.round(Number(item.unitPrice || 0)));
       item.subtotal = Number(item.quantity || 0) * Number(item.unitPrice || 0);
       return item;
     });

@@ -691,7 +691,7 @@ main {
 
 .item-fields {
   display: grid;
-  grid-template-columns: 150px minmax(0, 1fr);
+  grid-template-columns: 130px 170px minmax(0, 1fr);
   gap: 14px;
   align-items: end;
 }
@@ -714,6 +714,10 @@ main {
 
 .item-quantity {
   max-width: 120px;
+}
+
+.item-price {
+  max-width: 150px;
 }
 
 .item-note textarea {
