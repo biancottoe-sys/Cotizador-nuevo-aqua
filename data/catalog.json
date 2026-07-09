@@ -1,0 +1,408 @@
+{
+    "version":  "2.0.0",
+    "currency":  "ARS",
+    "heroImages":  [
+                       "assets/catalogo-real/hero-hf-20260622-212138-1c2bdf04-a717-4004-aa3a-ee2532eaf5b0-1.jpg",
+                       "assets/catalogo-real/hero-hf-20260622-220252-25900b36-5c4b-43dc-95a1-44c4d3db3af4.jpg",
+                       "assets/catalogo-real/hero-hf-20260622-220957-fb6947c9-5b4d-4233-a101-64590d5cdd8d.jpg"
+                   ],
+    "products":  [
+                     {
+                         "id":  "aqg-001",
+                         "code":  "AQG-001",
+                         "category":  "Bachas",
+                         "name":  "Bacha 500",
+                         "family":  "Bachas",
+                         "measure":  "500 mm",
+                         "finish":  "Blanco brillante",
+                         "material":  "Material Aquaglass",
+                         "price":  193,
+                         "description":  "Producto Aquaglass de catálogo para proyecto, obra y especificación profesional. Imágenes reales del catálogo corregido.",
+                         "images":  [
+                                        "assets/catalogo-real/bachas-bacha-500-1.jpg",
+                                        "assets/catalogo-real/bachas-bacha-500-2.jpg",
+                                        "assets/catalogo-real/bachas-bacha-500-3.jpg"
+                                    ]
+                     },
+                     {
+                         "id":  "aqg-002",
+                         "code":  "AQG-002",
+                         "category":  "Bachas",
+                         "name":  "Bacha Alta 1",
+                         "family":  "Bachas",
+                         "measure":  "A confirmar",
+                         "finish":  "Blanco brillante",
+                         "material":  "Material Aquaglass",
+                         "price":  266,
+                         "description":  "Producto Aquaglass de catálogo para proyecto, obra y especificación profesional. Imágenes reales del catálogo corregido.",
+                         "images":  [
+                                        "assets/catalogo-real/bachas-bacha-alta-1-1.jpg",
+                                        "assets/catalogo-real/bachas-bacha-alta-1-2.jpg",
+                                        "assets/catalogo-real/bachas-bacha-alta-1-3.jpg"
+                                    ]
+                     },
+                     {
+                         "id":  "aqg-003",
+                         "code":  "AQG-003",
+                         "category":  "Bachas",
+                         "name":  "Bacha Alta 2",
+                         "family":  "Bachas",
+                         "measure":  "A confirmar",
+                         "finish":  "Blanco brillante",
+                         "material":  "Material Aquaglass",
+                         "price":  339,
+                         "description":  "Producto Aquaglass de catálogo para proyecto, obra y especificación profesional. Imágenes reales del catálogo corregido.",
+                         "images":  [
+                                        "assets/catalogo-real/bachas-bacha-alta-2-1.jpg",
+                                        "assets/catalogo-real/bachas-bacha-alta-2-2.jpg",
+                                        "assets/catalogo-real/bachas-bacha-alta-2-3.jpg"
+                                    ]
+                     },
+                     {
+                         "id":  "aqg-004",
+                         "code":  "AQG-004",
+                         "category":  "Bachas",
+                         "name":  "Bacha Alta Cilindrica",
+                         "family":  "Bachas",
+                         "measure":  "A confirmar",
+                         "finish":  "Blanco brillante",
+                         "material":  "Material Aquaglass",
+                         "price":  412,
+                         "description":  "Producto Aquaglass de catálogo para proyecto, obra y especificación profesional. Imágenes reales del catálogo corregido.",
+                         "images":  [
+                                        "assets/catalogo-real/bachas-bacha-alta-cilindrica-1.jpg",
+                                        "assets/catalogo-real/bachas-bacha-alta-cilindrica-2.jpg",
+                                        "assets/catalogo-real/bachas-bacha-alta-cilindrica-3.jpg"
+                                    ]
+                     },
+                     {
+                         "id":  "aqg-005",
+                         "code":  "AQG-005",
+                         "category":  "Bañeras",
+                         "name":  "Bañera Embutida Milano 1740",
+                         "family":  "Bañera Embutida Milano 1740",
+                         "measure":  "Seleccionar medida",
+                         "finish":  "Blanco brillante",
+                         "material":  "Material Aquaglass",
+                         "price":  485,
+                         "variants":  [
+                                           { "code": "140X070", "measure": "140 x 70 cm", "price": 485 },
+                                           { "code": "150X070", "measure": "150 x 70 cm", "price": 520 },
+                                           { "code": "160X070", "measure": "160 x 70 cm", "price": 555 },
+                                           { "code": "170X070", "measure": "170 x 70 cm", "price": 590 },
+                                           { "code": "180X070", "measure": "180 x 70 cm", "price": 625 },
+                                           { "code": "170X080", "measure": "170 x 80 cm", "price": 655 },
+                                           { "code": "180X080", "measure": "180 x 80 cm", "price": 690 },
+                                           { "code": "180X090", "measure": "180 x 90 cm", "price": 735 },
+                                           { "code": "190X090", "measure": "190 x 90 cm", "price": 780 },
+                                           { "code": "150X120", "measure": "150 x 120 cm", "price": 830 },
+                                           { "code": "170X120", "measure": "170 x 120 cm", "price": 890 },
+                                           { "code": "180X120", "measure": "180 x 120 cm", "price": 940 },
+                                           { "code": "180X130", "measure": "180 x 130 cm", "price": 995 },
+                                           { "code": "180X150", "measure": "180 x 150 cm", "price": 1060 }
+                                       ],
+                         "description":  "Producto Aquaglass de catálogo para proyecto, obra y especificación profesional. Imágenes reales del catálogo corregido.",
+                         "images":  [
+                                        "assets/catalogo-real/banera-embutida-milano-1740-1.jpg",
+                                        "assets/catalogo-real/banera-embutida-milano-1740-2.jpg",
+                                        "assets/catalogo-real/banera-embutida-milano-1740-3.jpg"
+                                    ]
+                     },
+                     {
+                         "id":  "aqg-006",
+                         "code":  "AQG-006",
+                         "category":  "Bañeras Exentas",
+                         "name":  "Bañera Exenta Mykonos",
+                         "family":  "Bañeras Exentas",
+                         "measure":  "A confirmar",
+                         "finish":  "Blanco brillante",
+                         "material":  "Material Aquaglass",
+                         "price":  558,
+                         "description":  "Producto Aquaglass de catálogo para proyecto, obra y especificación profesional. Imágenes reales del catálogo corregido.",
+                         "images":  [
+                                        "assets/catalogo-real/baneras-exentas-banera-exenta-mykonos-1.jpg",
+                                        "assets/catalogo-real/baneras-exentas-banera-exenta-mykonos-2.jpg",
+                                        "assets/catalogo-real/baneras-exentas-banera-exenta-mykonos-3.jpg"
+                                    ]
+                     },
+                     {
+                         "id":  "aqg-007",
+                         "code":  "AQG-007",
+                         "category":  "Bañeras Exentas",
+                         "name":  "Bañera Exenta Padova",
+                         "family":  "Bañeras Exentas",
+                         "measure":  "A confirmar",
+                         "finish":  "Blanco brillante",
+                         "material":  "Material Aquaglass",
+                         "price":  631,
+                         "description":  "Producto Aquaglass de catálogo para proyecto, obra y especificación profesional. Imágenes reales del catálogo corregido.",
+                         "images":  [
+                                        "assets/catalogo-real/baneras-exentas-banera-exenta-padova-1.jpg",
+                                        "assets/catalogo-real/baneras-exentas-banera-exenta-padova-2.jpg",
+                                        "assets/catalogo-real/baneras-exentas-banera-exenta-padova-3.png"
+                                    ]
+                     },
+                     {
+                         "id":  "aqg-008",
+                         "code":  "AQG-008",
+                         "category":  "Espejos",
+                         "name":  "Espejo 1 Rectangular",
+                         "family":  "Espejos",
+                         "measure":  "A confirmar",
+                         "finish":  "Blanco brillante",
+                         "material":  "Vidrio y marco técnico",
+                         "price":  704,
+                         "description":  "Producto Aquaglass de catálogo para proyecto, obra y especificación profesional. Imágenes reales del catálogo corregido.",
+                         "images":  [
+                                        "assets/catalogo-real/espejos-espejo-1-rectangular-1.jpg",
+                                        "assets/catalogo-real/espejos-espejo-1-rectangular-2.jpg"
+                                    ]
+                     },
+                     {
+                         "id":  "aqg-009",
+                         "code":  "AQG-009",
+                         "category":  "Espejos",
+                         "name":  "Espejo 2 Rectangular",
+                         "family":  "Espejos",
+                         "measure":  "A confirmar",
+                         "finish":  "Blanco brillante",
+                         "material":  "Vidrio y marco técnico",
+                         "price":  777,
+                         "description":  "Producto Aquaglass de catálogo para proyecto, obra y especificación profesional. Imágenes reales del catálogo corregido.",
+                         "images":  [
+                                        "assets/catalogo-real/espejos-espejo-2-rectangular-1.jpg",
+                                        "assets/catalogo-real/espejos-espejo-2-rectangular-2.jpg"
+                                    ]
+                     },
+                     {
+                         "id":  "aqg-010",
+                         "code":  "AQG-010",
+                         "category":  "Espejos",
+                         "name":  "Espejo 3 Circular",
+                         "family":  "Espejos",
+                         "measure":  "A confirmar",
+                         "finish":  "Blanco brillante",
+                         "material":  "Vidrio y marco técnico",
+                         "price":  850,
+                         "description":  "Producto Aquaglass de catálogo para proyecto, obra y especificación profesional. Imágenes reales del catálogo corregido.",
+                         "images":  [
+                                        "assets/catalogo-real/espejos-espejo-3-circular-1.jpg",
+                                        "assets/catalogo-real/espejos-espejo-3-circular-2.jpg"
+                                    ]
+                     },
+                     {
+                         "id":  "aqg-011",
+                         "code":  "AQG-011",
+                         "category":  "Platos De Ducha",
+                         "name":  "Plato De Ducha Capri 1800 X 800",
+                         "family":  "Platos De Ducha",
+                         "measure":  "1800 x 800 mm",
+                         "finish":  "Blanco brillante",
+                         "material":  "Material Aquaglass",
+                         "price":  923,
+                         "description":  "Producto Aquaglass de catálogo para proyecto, obra y especificación profesional. Imágenes reales del catálogo corregido.",
+                         "images":  [
+                                        "assets/catalogo-real/platos-de-ducha-plato-de-ducha-capri-1800-x-800-1.jpg",
+                                        "assets/catalogo-real/platos-de-ducha-plato-de-ducha-capri-1800-x-800-2.jpg"
+                                    ]
+                     },
+                     {
+                         "id":  "aqg-012",
+                         "code":  "AQG-012",
+                         "category":  "Platos De Ducha",
+                         "name":  "Plato De Ducha Krea 2000 X 700",
+                         "family":  "Platos De Ducha",
+                         "measure":  "2000 x 700 mm",
+                         "finish":  "Blanco brillante",
+                         "material":  "Material Aquaglass",
+                         "price":  996,
+                         "description":  "Producto Aquaglass de catálogo para proyecto, obra y especificación profesional. Imágenes reales del catálogo corregido.",
+                         "images":  [
+                                        "assets/catalogo-real/platos-de-ducha-plato-de-ducha-krea-2000-x-700-1.jpg",
+                                        "assets/catalogo-real/platos-de-ducha-plato-de-ducha-krea-2000-x-700-2.jpg"
+                                    ]
+                     },
+                     {
+                         "id":  "aqg-013",
+                         "code":  "AQG-013",
+                         "category":  "Platos De Ducha",
+                         "name":  "Plato De Ducha Krea 2000 X 700 Revestido",
+                         "family":  "Platos De Ducha",
+                         "measure":  "2000 x 700 mm",
+                         "finish":  "Blanco brillante",
+                         "material":  "Material Aquaglass",
+                         "price":  189,
+                         "description":  "Producto Aquaglass de catálogo para proyecto, obra y especificación profesional. Imágenes reales del catálogo corregido.",
+                         "images":  [
+                                        "assets/catalogo-real/platos-de-ducha-plato-de-ducha-krea-2000-x-700-revestido-1.jpg",
+                                        "assets/catalogo-real/platos-de-ducha-plato-de-ducha-krea-2000-x-700-revestido-2.jpg"
+                                    ]
+                     },
+                     {
+                         "id":  "aqg-014",
+                         "code":  "AQG-014",
+                         "category":  "Platos De Ducha",
+                         "name":  "Plato De Ducha Modena 1200 X 700",
+                         "family":  "Platos De Ducha",
+                         "measure":  "1200 x 700 mm",
+                         "finish":  "Blanco brillante",
+                         "material":  "Material Aquaglass",
+                         "price":  262,
+                         "description":  "Producto Aquaglass de catálogo para proyecto, obra y especificación profesional. Imágenes reales del catálogo corregido.",
+                         "images":  [
+                                        "assets/catalogo-real/platos-de-ducha-plato-de-ducha-modena-1200-x-700-1.jpg",
+                                        "assets/catalogo-real/platos-de-ducha-plato-de-ducha-modena-1200-x-700-2.jpg"
+                                    ]
+                     },
+                     {
+                         "id":  "aqg-015",
+                         "code":  "AQG-015",
+                         "category":  "Bachas",
+                         "name":  "Bacha Alta Cilindrica",
+                         "family":  "Ultimas Correcciones",
+                         "measure":  "A confirmar",
+                         "finish":  "Blanco brillante",
+                         "material":  "Material Aquaglass",
+                         "price":  335,
+                         "description":  "Producto Aquaglass de catálogo para proyecto, obra y especificación profesional. Imágenes reales del catálogo corregido.",
+                         "images":  [
+                                        "assets/catalogo-real/ultimas-correcciones-bacha-alta-cilindrica-1.jpg",
+                                        "assets/catalogo-real/ultimas-correcciones-bacha-alta-cilindrica-2.jpg",
+                                        "assets/catalogo-real/ultimas-correcciones-bacha-alta-cilindrica-3.jpg"
+                                    ]
+                     },
+                     {
+                         "id":  "aqg-016",
+                         "code":  "AQG-016",
+                         "category":  "Bañeras",
+                         "name":  "Bañera Milano 1740",
+                         "family":  "Ultimas Correcciones",
+                         "measure":  "Seleccionar medida",
+                         "finish":  "Blanco brillante",
+                         "material":  "Material Aquaglass",
+                         "price":  408,
+                         "variants":  [
+                                           { "code": "140X070", "measure": "140 x 70 cm", "price": 408 },
+                                           { "code": "150X070", "measure": "150 x 70 cm", "price": 440 },
+                                           { "code": "160X070", "measure": "160 x 70 cm", "price": 472 },
+                                           { "code": "170X070", "measure": "170 x 70 cm", "price": 505 },
+                                           { "code": "180X070", "measure": "180 x 70 cm", "price": 538 },
+                                           { "code": "170X080", "measure": "170 x 80 cm", "price": 568 },
+                                           { "code": "180X080", "measure": "180 x 80 cm", "price": 602 },
+                                           { "code": "180X090", "measure": "180 x 90 cm", "price": 648 },
+                                           { "code": "190X090", "measure": "190 x 90 cm", "price": 694 },
+                                           { "code": "150X120", "measure": "150 x 120 cm", "price": 742 },
+                                           { "code": "170X120", "measure": "170 x 120 cm", "price": 805 },
+                                           { "code": "180X120", "measure": "180 x 120 cm", "price": 852 },
+                                           { "code": "180X130", "measure": "180 x 130 cm", "price": 905 },
+                                           { "code": "180X150", "measure": "180 x 150 cm", "price": 970 }
+                                       ],
+                         "description":  "Producto Aquaglass de catálogo para proyecto, obra y especificación profesional. Imágenes reales del catálogo corregido.",
+                         "images":  [
+                                        "assets/catalogo-real/ultimas-correcciones-banera-milano-1740-1.jpg",
+                                        "assets/catalogo-real/ultimas-correcciones-banera-milano-1740-2.jpg",
+                                        "assets/catalogo-real/ultimas-correcciones-banera-milano-1740-3.jpg"
+                                    ]
+                     },
+                     {
+                         "id":  "aqg-017",
+                         "code":  "AQG-017",
+                         "category":  "Mini Piscinas",
+                         "name":  "Hero Mini Piscinas",
+                         "family":  "Ultimas Correcciones",
+                         "measure":  "A confirmar",
+                         "finish":  "Blanco brillante",
+                         "material":  "Material Aquaglass",
+                         "price":  481,
+                         "description":  "Producto Aquaglass de catálogo para proyecto, obra y especificación profesional. Imágenes reales del catálogo corregido.",
+                         "images":  [
+                                        "assets/catalogo-real/ultimas-correcciones-hero-mini-piscinas-1.jpg",
+                                        "assets/catalogo-real/ultimas-correcciones-hero-mini-piscinas-2.jpg"
+                                    ]
+                     },
+                     {
+                         "id":  "aqg-018",
+                         "code":  "AQG-018",
+                         "category":  "Mini Piscinas",
+                         "name":  "Mini Piscina 190X130",
+                         "family":  "Ultimas Correcciones",
+                         "measure":  "190 x 130 mm",
+                         "finish":  "Blanco brillante",
+                         "material":  "Material Aquaglass",
+                         "price":  554,
+                         "description":  "Producto Aquaglass de catálogo para proyecto, obra y especificación profesional. Imágenes reales del catálogo corregido.",
+                         "images":  [
+                                        "assets/catalogo-real/ultimas-correcciones-mini-piscina-190x130-1.jpg",
+                                        "assets/catalogo-real/ultimas-correcciones-mini-piscina-190x130-2.jpg",
+                                        "assets/catalogo-real/ultimas-correcciones-mini-piscina-190x130-3.jpg"
+                                    ]
+                     },
+                     {
+                         "id":  "aqg-019",
+                         "code":  "AQG-019",
+                         "category":  "Vanitory",
+                         "name":  "Bacha 410 X 240",
+                         "family":  "Vanitory",
+                         "measure":  "410 x 240 mm",
+                         "finish":  "Blanco brillante",
+                         "material":  "Mueble + superficie Aquaglass",
+                         "price":  627,
+                         "description":  "Producto Aquaglass de catálogo para proyecto, obra y especificación profesional. Imágenes reales del catálogo corregido.",
+                         "images":  [
+                                        "assets/catalogo-real/vanitory-bacha-410-x-240-1.jpg",
+                                        "assets/catalogo-real/vanitory-bacha-410-x-240-2.jpg",
+                                        "assets/catalogo-real/vanitory-bacha-410-x-240-3.jpg"
+                                    ]
+                     },
+                     {
+                         "id":  "aqg-020",
+                         "code":  "AQG-020",
+                         "category":  "Vanitory",
+                         "name":  "Bacha 410 X 240 (Larga No Tenemos Medidas)",
+                         "family":  "Vanitory",
+                         "measure":  "410 x 240 mm",
+                         "finish":  "Blanco brillante",
+                         "material":  "Mueble + superficie Aquaglass",
+                         "price":  700,
+                         "description":  "Producto Aquaglass de catálogo para proyecto, obra y especificación profesional. Imágenes reales del catálogo corregido.",
+                         "images":  [
+                                        "assets/catalogo-real/vanitory-bacha-410-x-240-larga-no-tenemos-medidas-1.jpg",
+                                        "assets/catalogo-real/vanitory-bacha-410-x-240-larga-no-tenemos-medidas-2.jpg",
+                                        "assets/catalogo-real/vanitory-bacha-410-x-240-larga-no-tenemos-medidas-3.jpg"
+                                    ]
+                     },
+                     {
+                         "id":  "aqg-021",
+                         "code":  "AQG-021",
+                         "category":  "Vanitory",
+                         "name":  "Vanitory No Sabemos Nombre",
+                         "family":  "Vanitory",
+                         "measure":  "A confirmar",
+                         "finish":  "Blanco brillante",
+                         "material":  "Mueble + superficie Aquaglass",
+                         "price":  773,
+                         "description":  "Producto Aquaglass de catálogo para proyecto, obra y especificación profesional. Imágenes reales del catálogo corregido.",
+                         "images":  [
+                                        "assets/catalogo-real/vanitory-vanitory-no-sabemos-nombre-1.jpg",
+                                        "assets/catalogo-real/vanitory-vanitory-no-sabemos-nombre-2.jpg"
+                                    ]
+                     },
+                     {
+                         "id":  "aqg-022",
+                         "code":  "AQG-022",
+                         "category":  "Vanitory",
+                         "name":  "Vanitory Nordic",
+                         "family":  "Vanitory",
+                         "measure":  "A confirmar",
+                         "finish":  "Blanco brillante",
+                         "material":  "Mueble + superficie Aquaglass",
+                         "price":  846,
+                         "description":  "Producto Aquaglass de catálogo para proyecto, obra y especificación profesional. Imágenes reales del catálogo corregido.",
+                         "images":  [
+                                        "assets/catalogo-real/vanitory-vanitory-nordic-1.jpg",
+                                        "assets/catalogo-real/vanitory-vanitory-nordic-2.jpg",
+                                        "assets/catalogo-real/vanitory-vanitory-nordic-3.jpg"
+                                    ]
+                     }
+                 ]
+}
